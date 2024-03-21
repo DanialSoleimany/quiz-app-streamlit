@@ -1,56 +1,116 @@
 import streamlit as st
 
+# Define quiz questions, answers, and options
+questions_data = [
+    {
+        "question": "**What is the output of this code?**\nanimal = 'bear'\nanimal = 'lion'\nprint(animal)",
+        "answer": "'lion'",
+        "options": ["'bear'", "animal", "'lion'", "error"]
+    },
+    {
+        "question": "**What is the output of this code?**\nname = 'Jack'\nName = 'Sara'\nprint(name)",
+        "answer": "'Jack'",
+        "options": ["'Sara'", "Name", "name", "'Jack'"]
+    },
+    {
+        "question": "**Which one is valid in naming a variable?**",
+        "answer": "myQuestion = 'How to program an application?'",
+        "options": [
+            "1_number = 1000",
+            "my_variable! = 'Hello World!'",
+            "myQuestion = 'How to program an application?'",
+            "my-name = 'Jeff'"
+        ]
+    },
+    {
+        "question": "**Which one causes error?**",
+        "answer": """print("Hello World')""",
+        "options": [
+            """print("Hello World')""",
+            """print("This is my saying: \ "Be friend with yourself!\ " ") = "Hello World!" """,
+            """print('I\ 'm the greatest person in history')""",
+            """print('2' + str(2))"""
+        ]
+    },
+    {
+        "question": "**Among the following options, which one does not accurately represent a benefit of comments in Python?**",
+        "answer": "Optimize the code",
+        "options": [
+            "Optimize the code",
+            "Explain Python code",
+            "Prevent execution when testing code",
+            "Make the code more readable"
+        ]
+    },
+    {
+        "question": "**The output of which one is 33?**",
+        "answer": "'3' + str(3)",
+        "options": [
+            "str(3) + 3",
+            "3 + int(3.3)",
+            "'3' + str(3)",
+            "3 + float(3)"
+        ]
+    },
+    {
+        "question": """**Which options are correct?**\n1) 3 + int(2.2) -> output = 5.2\n2) float(32) + int(3.4) -> output = 35.0\n3) 2 + '3' -> output = 5\n4) str(2) * 2 = 22""",
+        "answer": "2, 4",
+        "options": [
+            "1, 2, 3",
+            "1, 2, 4",
+            "2, 3",
+            "2, 4"
+        ]
+    },
+    {
+        "question": "**Which one is correct in naming variables?**",
+        "answer": "myName = 'Carl'",
+        "options": [
+            "type = 4",
+            "myName = 'Carl'",
+            "for = 'This is a string'",
+            "my music = 'Top in Playlist'"
+        ]
+    },
+    {
+        "question": "**Which one is not a feature of a variable in Python?**",
+        "answer": "It's a data type in Python",
+        "options": [
+            "It is created the moment you first assign a value to it",
+            "A Container for storing data values",
+            "It's a data type in Python",
+            "Python has no command for declaring a variable"
+        ]
+    },
+    {
+        "question": "**Which one shows the snake_case?**",
+        "answer": "my_interesting_music 'Pop Musics.'",
+        "options": [
+            "myVariable = 'This is a variable'",
+            "BagOfMyBrother = 'So Cool!'",
+            "my_interesting_music 'Pop Musics.'",
+            "None of them"
+        ]
+    }
+]
 
-if "Question_1" not in st.session_state:
-    st.session_state["Question_1"] = "'lion'"
+# Display quiz questions
+st.write(""" # Python Quiz Web Application
+Challenge yourself with these questions\n
+**Let's Get Started!**""")
 
-
-def quiz(question, answer, options, key):
-    user_answer = st.radio(question, options)
+# Function to display a quiz question and collect answer
+def display_question(question_data, key):
+    user_answer = st.radio(question_data["question"], question_data["options"])
     btn = st.button("Submit", key=key)
     if btn:
-        if user_answer == answer:
-            st.markdown("<p style='color:white;background-color:green;padding:10px;border-radius:20px;'>Correct!</p>",
-                        unsafe_allow_html=True)
+        if user_answer == question_data["answer"]:
+            st.success("Correct!")
         else:
-            st.markdown("<p style='color:white;background-color:red;padding:10px;border-radius:20px;'>Wrong!</p>",
-                        unsafe_allow_html=True)
+            st.error("Incorrect!")
 
-question_1 = """**What is the output of this code?**\n
-animal = 'bear'\n
-animal = 'lion'\n
-print(animal)"""
-
-answer_1 = "'lion'"
-options_1 = ["'bear'", "animal", "'lion'", "error"]
-
-with st.expander("Question 1"):
-    quiz(question_1, answer_1, options_1, "Q1")
-
-
-question_2 = """**What is the output of this code?**\n
-name = 'Jack'\n
-Name = 'Sara'\n
-print(name)"""
-
-answer_2 = "'Jack'"
-options_2 = ["'Sara'", "Name", "name", "'Jack'"]
-
-with st.expander("Question 2"):
-    quiz(question_2, answer_2, options_2, "Q2")
-
-
-
-question_3 = """**Which one is valid in naming a variable ?**\n
-1) 1_number = 1000\n
-2) my_variable! = "Hello World!"\n
-3) myQuestion = "How to pragram an application?"\n
-4) my-name = "Jeff"
-"""
-
-answer_3 = 3
-options_3 = [2, 3, 1, 4]
-
-with st.expander("Question 3"):
-    quiz(question_3, answer_3, options_3, "Q3")
-
+# Iterate over each question
+for i, question_data in enumerate(questions_data, start=1):
+    key = f"Q{i}"
+    with st.expander(f"Question {i}"):
+        display_question(question_data, key)
