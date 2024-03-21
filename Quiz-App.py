@@ -3,12 +3,12 @@ import streamlit as st
 # Define quiz questions, answers, and options
 questions_data = [
     {
-        "question": "**What is the output of this code?**\nanimal = 'bear'\nanimal = 'lion'\nprint(animal)",
+        "question": "**What is the output of this code?**  \n animal = 'bear'  \nanimal = 'lion'  \n print(animal)",
         "answer": "'lion'",
         "options": ["'bear'", "animal", "'lion'", "error"]
     },
     {
-        "question": "**What is the output of this code?**\nname = 'Jack'\nName = 'Sara'\nprint(name)",
+        "question": "**What is the output of this code?**  \n name = 'Jack'  \nName = 'Sara'  \n print(name)",
         "answer": "'Jack'",
         "options": ["'Sara'", "Name", "name", "'Jack'"]
     },
@@ -27,7 +27,7 @@ questions_data = [
         "answer": """print("Hello World')""",
         "options": [
             """print("Hello World')""",
-            """print("This is my saying: \ "Be friend with yourself!\ " ") = "Hello World!" """,
+            """print("This is my saying: \ "Be friend with yourself!\ " ") """,
             """print('I\ 'm the greatest person in history')""",
             """print('2' + str(2))"""
         ]
@@ -53,7 +53,7 @@ questions_data = [
         ]
     },
     {
-        "question": """**Which options are correct?**\n1) 3 + int(2.2) -> output = 5.2\n2) float(32) + int(3.4) -> output = 35.0\n3) 2 + '3' -> output = 5\n4) str(2) * 2 = 22""",
+        "question": """**Which options are correct?**    \n 1\) 3 + int(2.2) -> output = 5.    \n 2\) float(32) + int(3.4) -> output = 35.0    \n 3\) 2 + '3' -> output = 5    \n 4\) str(2) * 2 = 22""",
         "answer": "2, 4",
         "options": [
             "1, 2, 3",
@@ -88,15 +88,15 @@ questions_data = [
         "options": [
             "myVariable = 'This is a variable'",
             "BagOfMyBrother = 'So Cool!'",
-            "my_interesting_music 'Pop Musics.'",
+            "my_interesting_music = 'Pop Musics.'",
             "None of them"
         ]
     }
 ]
 
 # Display quiz questions
-st.write(""" # Python Quiz Web Application
-Challenge yourself with these questions\n
+st.write(""" # Quiz Web Application - Part. 1 \n
+Challenge yourself with these **10 questions**.\n
 **Let's Get Started!**""")
 
 # Function to display a quiz question and collect answer
