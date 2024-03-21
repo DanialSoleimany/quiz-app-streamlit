@@ -84,7 +84,7 @@ questions_data = [
     },
     {
         "question": "**Which one shows the snake_case?**",
-        "answer": "my_interesting_music 'Pop Musics.'",
+        "answer": "my_interesting_music = 'Pop Musics.'",
         "options": [
             "myVariable = 'This is a variable'",
             "BagOfMyBrother = 'So Cool!'",
