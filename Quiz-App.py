@@ -36,6 +36,21 @@ print(name)"""
 answer_2 = "'Jack'"
 options_2 = ["'Sara'", "Name", "name", "'Jack'"]
 
-with st.expander("Question 2", expanded=False):
+with st.expander("Question 2"):
     quiz(question_2, answer_2, options_2, "Q2")
+
+
+
+question_3 = """**Which one is valid in naming a variable ?**\n
+1) 1_number = 1000\n
+2) my_variable! = "Hello World!"\n
+3) myQuestion = "How to pragram an application?"\n
+4) my-name = "Jeff"
+"""
+
+answer_3 = 3
+options_3 = [2, 3, 1, 4]
+
+with st.expander("Question 3"):
+    quiz(question_3, answer_3, options_3, "Q3")
 
